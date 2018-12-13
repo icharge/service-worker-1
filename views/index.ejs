@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link
+    rel='stylesheet'
+    href='/stylesheets/style.css'
+  />
+</head>
+
+<body>
+  <h1>
+    <%= title %>
+  </h1>
+  <p>Welcome to
+    <%= title %>
+  </p>
+
+  <script>
+    window.addEventListener('load', () => {
+      if (!('serviceWorker' in navigator)) {
+        // service workers not supported 😣
+        return;
+      }
+
+      navigator.serviceWorker.register('/sw.js').then(
+        () => {
+          // registered! 👍🏼
+          console.info('SW registration success.');
+        },
+        err => {
+          console.error('SW registration failed! 😱', err);
+        }
+      );
+    });
+  </script>
+</body>
+
+</html>
